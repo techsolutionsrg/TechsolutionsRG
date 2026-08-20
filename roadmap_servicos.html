@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Roadmap de Serviços | Tech Solutions RG</title>
+    <meta name="description" content="Navegue pela jornada completa de execução da Tech Solutions RG: do diagnóstico e caldeiraria à montagem, automação NR-10 e manutenção contínua.">
+    
+    <!-- Fonts & Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- CSS Externo -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="container header-container">
+            <a href="index.html" class="logo">
+                <i class="fa-solid fa-gears logo-icon"></i>
+                <span>Tech <strong>Solutions RG</strong></span>
+            </a>
+            <nav class="nav-menu">
+                <a href="index.html#home">Home</a>
+                <a href="index.html#solucoes">Soluções</a>
+                <a href="roadmap_servicos.html" class="active">Roadmap</a>
+                <a href="index.html#contato">Contato</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        
+        <!-- Hero Section -->
+        <section class="roadmap-hero">
+            <h1>Roadmap de Serviços Industriais</h1>
+            <p>Conheça o fluxo operacional completo e selecione as etapas do seu projeto.</p>
+            
+            <div class="instruction-banner">
+                <i class="fa-solid fa-hand-pointer"></i> Clique nos cards abaixo para ver os detalhes de cada etapa
+            </div>
+
+            <!-- Filtros de Categorias -->
+            <div class="filter-container">
+                <button class="filter-btn active" onclick="filterRoadmap('todos', this)"><i class="fa-solid fa-layer-group"></i> Visão Geral (Turnkey)</button>
+                <button class="filter-btn" onclick="filterRoadmap('mecanica', this)"><i class="fa-solid fa-industry"></i> Metal Mecânica</button>
+                <button class="filter-btn" onclick="filterRoadmap('eletrica', this)"><i class="fa-solid fa-bolt"></i> Elétrica & NR-10</button>
+                <button class="filter-btn" onclick="filterRoadmap('terceirizacao', this)"><i class="fa-solid fa-users-gear"></i> Mão de Obra & Paradas</button>
+            </div>
+        </section>
+
+        <!-- Timeline -->
+        <section class="roadmap-timeline" id="timeline">
+            
+            <!-- Passo 1 -->
+            <div class="roadmap-step left" data-category="mecanica eletrica" onclick="selectStep(1, this)">
+                <div class="step-node">01</div>
+                <div class="step-card">
+                    <span class="step-badge">Etapa 1</span>
+                    <h3>1. Diagnóstico & Engenharia de Projeto</h3>
+                    <p>Vistoria técnica, mapeamento de demandas e projetos em conformidade com normas.</p>
+                    <div class="click-action-trigger">
+                        <span>Ver Detalhes do Projeto</span> <i class="fa-solid fa-chevron-down"></i>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Passo 2 -->
+            <div class="roadmap-step right" data-category="mecanica" onclick="selectStep(2, this)">
+                <div class="step-node">02</div>
+                <div class="step-card">
+                    <span class="step-badge">Etapa 2</span>
+                    <h3>2. Caldeiraria Especializada & Fabricação</h3>
+                    <p>Confecção de tanques, tubulações, soldagem MIG/TIG e estruturas metálicas.</p>
+                    <div class="click-action-trigger">
+                        <span>Ver Entregáveis de Fabricação</span> <i class="fa-solid fa-chevron-down"></i>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Passo 3 -->
+            <div class="roadmap-step left" data-category="eletrica" onclick="selectStep(3, this)">
+                <div class="step-node">03</div>
+                <div class="step-card">
+                    <span class="step-badge">Etapa 3</span>
+                    <h3>3. Montagem & Infraestrutura Elétrica</h3>
+                    <p>Instalação de painéis CCM/QGBT, cabos, leitos, aterramento e sistemas SPDA.</p>
+                    <div class="click-action-trigger">
+                        <span>Ver Escopo de Elétrica</span> <i class="fa-solid fa-chevron-down"></i>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Passo 4 -->
+            <div class="roadmap-step right" data-category="mecanica eletrica" onclick="selectStep(4, this)">
+                <div class="step-node">04</div>
+                <div class="step-card">
+                    <span class="step-badge">Etapa 4</span>
+                    <h3>4. Comissionamento & Testes de Carga</h3>
+                    <p>Partida de motores, validação de inversores e testes de acionamento com segurança.</p>
+                    <div class="click-action-trigger">
+                        <span>Ver Testes e Laudos</span> <i class="fa-solid fa-chevron-down"></i>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Passo 5 -->
+            <div class="roadmap-step left" data-category="terceirizacao mecanica eletrica" onclick="selectStep(5, this)">
+                <div class="step-node">05</div>
+                <div class="step-card">
+                    <span class="step-badge">Etapa 5</span>
+                    <h3>5. Manutenção & Terceirização de Equipes</h3>
+                    <p>Contratos mensais de manutenção e equipes dedicadas para paradas industriais.</p>
+                    <div class="click-action-trigger">
+                        <span>Ver Perfis de Mão de Obra</span> <i class="fa-solid fa-chevron-down"></i>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- Painel de Detalhes -->
+        <section class="details-panel" id="details-panel">
+            <div class="panel-header">
+                <h2 id="panel-title">Detalhamento dos Serviços</h2>
+                <button class="panel-close" onclick="closePanel()">&times;</button>
+            </div>
+            <div class="panel-grid">
+                <div>
+                    <h4 style="color: #fff; margin-bottom: 12px;">Entregáveis Técnicos da Etapa:</h4>
+                    <ul class="deliverables-list" id="panel-deliverables"></ul>
+                </div>
+                <div class="cta-box">
+                    <h4 style="color: #fff;">Incluir no seu Projeto?</h4>
+                    <p style="font-size: 0.85rem; color: var(--silver-dark); margin-top: 5px;">Solicite um orçamento sob medida para sua indústria.</p>
+                    <a href="index.html#contato" class="btn-cta" id="panel-cta-btn">Solicitar Proposta</a>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer style="text-align: center; padding: 25px 0; background: #0b0f16; border-top: 1px solid rgba(229,231,235,0.1); font-size: 0.85rem; color: #9CA3AF;">
+        <div class="container">
+            <p><strong>E. de O. Xavier & Cia LTDA</strong> | CNPJ: 59.437.805/0001-40 | Rio Grande / RS</p>
+            <p style="margin-top: 4px;">&copy; 2026 Tech Solutions RG. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- Script Explicito no Final -->
+    <script src="script.js"></script>
+</body>
+</html>
