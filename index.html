@@ -1,350 +1,266 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <!-- Meta Tags Principais para SEO -->
-    <title>Tech Solutions | Soluções Industriais, Metal Mecânica, Elétrica NR-10 e Terceirização</title>
-    <meta name="description" content="Soluções completas de engenharia: fabricação, caldeiraria, soldagem MIG/TIG, montagem mecânica, instalações elétricas industriais NR-10 e terceirização de mão de obra para indústrias, portos e construção.">
-    <meta name="keywords" content="caldeiraria especializada, soldagem TIG MIG, montagem industrial, manutenção preventiva mecânica, elétrica industrial NR-10, quadros QGBT, SPDA aterramento, mão de obra terceirizada para paradas industriais">
-    <link rel="canonical" href="https://techsolutions.com.br/">
-    
-    <!-- Google Fonts & FontAwesome Icons -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Tech Solutions | Metal Mecânica, Elétrica NR-10 e Serviços Industriais em Rio Grande/RS</title>
+  <meta name="description" content="A Tech Solutions (E. de O. Xavier & Cia LTDA - CNPJ 59.437.805/0001-40) oferece soluções completas em Metal Mecânica, Caldeiraria, Elétrica Industrial NR-10 e Gestão de Paradas Industriais em Rio Grande/RS e região.">
+  <meta name="keywords" content="metal mecanica rio grande rs, caldeiraria industrial, eletrica nr-10, soldagem mig mag tig, paradas industriais, manutencao predial e industrial, e de o xavier, tech solutions rio grande">
+  <meta name="robots" content="index, follow">
+  <meta name="author" content="Tech Solutions">
+  <meta name="theme-color" content="#111720">
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Tech Solutions | Soluções Industriais, Metal Mecânica & Elétrica NR-10">
+  <meta property="og:description" content="Engenharia, Fabricação, Montagem, Elétrica NR-10 e Manutenção Industrial Turnkey em Rio Grande/RS. Atendimento B2B especializado.">
+  <meta property="og:locale" content="pt_BR">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "Tech Solutions - Solução Industrial, Predial e Tecnológica",
+    "legalName": "E. de O. Xavier & Cia LTDA",
+    "taxID": "59.437.805/0001-40",
+    "description": "Provedor completo de infraestrutura mecânica e elétrica. Atendemos desde demandas pontuais até a gestão integral de contratos e grandes paradas industriais.",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Rio Grande",
+      "addressRegion": "RS",
+      "addressCountry": "BR"
+    },
+    "areaServed": [
+      "Rio Grande",
+      "Pelotas",
+      "Rio Grande do Sul"
+    ],
+    "knowsAbout": [
+      "Metal Mecânica Industrial",
+      "Caldeiraria",
+      "Instalações Elétricas NR-10",
+      "SPDA e Aterramento",
+      "Manutenção e Paradas Industriais",
+      "Soldagem Especializada MIG/MAG/TIG"
+    ]
+  }
+  </script>
+
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+
+  <script src="components.js" defer></script>
 </head>
 <body>
 
-    <!-- Header Fixo Global -->
-<header class="header">
-    <div class="container header-container">
-        <a href="#home" class="logo">
-            <i class="fa-solid fa-gears logo-icon"></i>
-            <span>Tech <strong>Solutions</strong></span>
-        </a>
+  <app-header></app-header>
 
-        <nav class="nav-menu" id="nav-menu">
-            <a href="#home">Home</a>
-            <a href="#solucoes">Soluções</a>
-            <a href="#roadmap">Roadmap</a>
-            <a href="#metal-mecanica">Metal Mecânica</a>
-            <a href="#eletrica">Elétrica Industrial</a>
-            <a href="#terceirizacao">Terceirização</a>
-            <a href="#segmentos">Segmentos</a>
-            <a href="#contato">Contato</a>
-            <!-- Botão exibido exclusivamente no menu mobile -->
-            <a href="#contato" class="btn btn-secondary mobile-menu-cta">Solicitar Proposta Técnica</a>
-        </nav>
-
-        <!-- Botão exibido exclusivamente no desktop -->
-        <a href="#contato" class="btn btn-secondary nav-cta">Solicitar Proposta Técnica</a>
-
-        <button class="mobile-toggle" id="mobile-toggle" aria-label="Abrir Menu">
-            <i class="fa-solid fa-bars"></i>
-        </button>
-    </div>
-</header>
-
-
-    <!-- Hero Section Otimizada para Conversão B2B -->
-    <section id="home" class="hero">
-        <div class="container">
-            <div class="hero-grid">
-                <div class="hero-left reveal">
-                    <span class="hero-tag"><i class="fa-solid fa-shield-halved"></i> Soluções Integradas & Governança Técnica</span>
-                    <h1 class="hero-title">Engenharia, Fabricação, Montagem e Manutenção Industrial Turnkey</h1>
-                </div>
-                <div class="hero-right reveal">
-                    <p class="hero-subtitle">Provedor completo de infraestrutura mecânica e elétrica. Atendemos desde demandas pontuais até a gestão integral de contratos e grandes paradas industriais.</p>
-                    <div class="hero-actions">
-                        <a href="#contato" class="btn btn-primary">Fale com um Engenheiro <i class="fa-solid fa-arrow-right"></i></a>
-                        <a href="#solucoes" class="btn btn-outline">Ver Portfólio de Serviços</a>
-                    </div>
-                </div>
+  <main>
+    <section class="hero">
+      <div class="container">
+        <div class="hero-grid">
+          <div class="hero-text">
+            <span class="hero-tag">
+              <i class="fa-solid fa-industry"></i> Soluções Integradas Turnkey
+            </span>
+            <h1 class="hero-title">Engenharia, Metal Mecânica & Elétrica NR-10 em Rio Grande/RS</h1>
+            <p class="hero-subtitle">
+              Atuamos na fabricação, montagem e manutenção industrial e predial. Do fornecimento de insumos e caldeiraria à automação e gestão integral de paradas de fábrica.
+            </p>
+            <div class="hero-actions">
+              <a href="#contato" class="btn btn-primary btn-lg">
+                <i class="fa-solid fa-file-signature"></i> Solicitar Proposta Técnica
+              </a>
+              <a href="roadmap_servicos.html" class="btn btn-secondary btn-lg">
+                <i class="fa-solid fa-list-check"></i> Catálogo Completo
+              </a>
             </div>
-
-            <!-- Banner do Hero com Proposta do Manual -->
-            <div class="hero-banner-container reveal">
-                <div class="hero-banner-content">
-                    <h3><i class="fa-solid fa-circle-check"></i> Solução Ponta a Ponta (End-to-End)</h3>
-                    <p>Fornecemos a solução completa: do fornecimento de insumos e fabricação de peças à montagem, automação e manutenção contínua das suas instalações.</p>
-                </div>
+          </div>
+          <div class="hero-banner-container">
+            <div class="hero-banner-content">
+              <h3><i class="fa-solid fa-shield-halved" style="color: var(--cyan);"></i> Conformidade & Segurança</h3>
+              <p>Projetos executados sob o rigor das normas técnicas (NR-10, SPDA) com equipe multidisciplinar alocada para agilidade e redução de *downtime* em indústrias e portos.</p>
+              <small style="color: var(--text-muted); display: block; margin-top: 10px;">
+                <strong>Razão Social:</strong> E. de O. Xavier & Cia LTDA | <strong>CNPJ:</strong> 59.437.805/0001-40
+              </small>
             </div>
+          </div>
         </div>
+      </div>
     </section>
 
-    <!-- Seção Bento Grid: Portfólio Integrado de Serviços -->
-    <section id="solucoes" class="services">
-        <div class="container">
-            <div class="section-header reveal">
-                <h2>Portfólio Integrado de Serviços Industriais</h2>
-                <p>Estrutura multidisciplinar pronta para atender com máxima agilidade e rigor técnico.</p>
-            </div>
-            
-            <div class="bento-grid">
-                
-                <!-- Card 1: Metal Mecânica Industrial -->
-                <div id="metal-mecanica" class="bento-card bento-large reveal">
-                    <div class="card-icon"><i class="fa-solid fa-industry"></i></div>
-                    <span class="card-badge">Divisão Mecânica</span>
-                    <h3>Metal Mecânica Industrial & Caldeiraria</h3>
-                    <p>Fabricação, montagem e manutenção de estruturas e equipamentos de alta complexidade.</p>
-                    
-                    <div class="sub-services-grid">
-                        <div class="sub-service-item">
-                            <h4><i class="fa-solid fa-screwdriver-wrench"></i> Fabricação & Montagem</h4>
-                            <p>Estruturas metálicas, passarelas, plataformas, escadas, mezaninos, bases e proteções técnicas.</p>
-                        </div>
-                        <div class="sub-service-item">
-                            <h4><i class="fa-solid fa-vessel-perfusion"></i> Caldeiraria Especializada</h4>
-                            <p>Confecção de tanques, reservatórios, tubulações, chutes, calhas, dutos, funis, moegas e silos.</p>
-                        </div>
-                        <div class="sub-service-item">
-                            <h4><i class="fa-solid fa-fire-burner"></i> Soldagem de Alta Performance</h4>
-                            <p>Processos MIG/MAG, TIG e Eletrodo Revestido em Aço Carbono, Inox e Alumínio com recuperação estrutural.</p>
-                        </div>
-                        <div class="sub-service-item">
-                            <h4><i class="fa-solid fa-gears"></i> Montagem e Manutenção</h4>
-                            <p>Desmontagem, remontagem, trocas de componentes, suporte em paradas de fábrica e corte técnico.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Card 2: Elétrica Industrial e Alta Tensão -->
-                <div id="eletrica" class="bento-card bento-large reveal">
-                    <div class="card-icon"><i class="fa-solid fa-bolt"></i></div>
-                    <span class="card-badge">Divisão Elétrica</span>
-                    <h3>Elétrica Industrial, Infraestrutura & NR-10</h3>
-                    <p>Projetos elétricos completos, automação, alta/média tensão e adequação técnica rigorosa.</p>
-
-                    <div class="sub-services-grid">
-                        <div class="sub-service-item">
-                            <h4><i class="fa-solid fa-plug-circle-bolt"></i> Elétrica Industrial & CCM</h4>
-                            <p>Montagem de painéis elétricos, QGBT, automação, comandos, inversores e correção de fator de potência.</p>
-                        </div>
-                        <div class="sub-service-item">
-                            <h4><i class="fa-solid fa-tower-cell"></i> Alta Tensão & Subestações</h4>
-                            <p>Manutenção de cabines de média tensão, subestações, leitos, eletrocalhas e identificação de cabos.</p>
-                        </div>
-                        <div class="sub-service-item">
-                            <h4><i class="fa-solid fa-shield-cat"></i> SPDA & Aterramento</h4>
-                            <p>Sistemas de proteção contra descargas atmosféricas (para-raios), laudos e malhas de aterramento seguro.</p>
-                        </div>
-                        <div class="sub-service-item">
-                            <h4><i class="fa-solid fa-building-circle-check"></i> Elétrica Predial & Retrofit</h4>
-                            <p>Quadros de distribuição, iluminação LED/emergência, carregadores EV e retrofit de instalações antigas.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Card 3: Terceirização e Mão de Obra -->
-                <div id="terceirizacao" class="bento-card bento-full reveal">
-                    <div class="card-icon"><i class="fa-solid fa-users-gear"></i></div>
-                    <span class="card-badge">Contratos & Terceirização</span>
-                    <h3>Terceirização e Equipes Especializadas para Paradas Industriais</h3>
-                    <p>Alocação ágil de mão de obra qualificada para contratos contínuos de manutenção ou demandas temporárias.</p>
-
-                    <div class="profiles-tags">
-                        <span class="tag"><i class="fa-solid fa-user-check"></i> Caldeireiros</span>
-                        <span class="tag"><i class="fa-solid fa-user-check"></i> Soldadores Qualificados</span>
-                        <span class="tag"><i class="fa-solid fa-user-check"></i> Montadores Industriais</span>
-                        <span class="tag"><i class="fa-solid fa-user-check"></i> Encanadores Industriais</span>
-                        <span class="tag"><i class="fa-solid fa-user-check"></i> Mecânicos Montadores</span>
-                        <span class="tag"><i class="fa-solid fa-user-check"></i> Eletricistas NR-10</span>
-                    </div>
-                </div>
-
-            </div>
+    <section class="services" id="servicos">
+      <div class="container">
+        <div class="section-header reveal">
+          <h2>Portfólio Integrado de Serviços</h2>
+          <p>Estrutura completa dividida em frentes especializadas para atender setores operacionais críticos.</p>
         </div>
+
+        <div class="bento-grid">
+          <div class="bento-card bento-large reveal">
+            <i class="fa-solid fa-gears card-icon"></i>
+            <span class="card-badge">Divisão Mecânica</span>
+            <h3>Metal Mecânica Industrial & Caldeiraria</h3>
+            <p>Fabricação, soldagem de alta performance e montagem de estruturas complexas para indústrias, estaleiros e terminais portuários.</p>
+            <div class="sub-services-grid">
+              <div class="sub-service-item">
+                <h4>Estruturas & Montagem</h4>
+                <p>Plataformas, passarelas, mezaninos, escadas industriais, tubulações e suporte técnico.</p>
+              </div>
+              <div class="sub-service-item">
+                <h4>Caldeiraria & Solda Especial</h4>
+                <p>Tanques, silos, dutos, moegas e processos MIG/MAG, TIG e Eletrodo Revestido.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="bento-card reveal">
+            <i class="fa-solid fa-bolt card-icon"></i>
+            <span class="card-badge">Divisão Elétrica</span>
+            <h3>Elétrica Industrial & Adequação NR-10</h3>
+            <p>Instalações de alta e média tensão, montagem de painéis, aterramento, laudos e sistemas SPDA (para-raios).</p>
+          </div>
+
+          <div class="bento-card reveal">
+            <i class="fa-solid fa-clock-rotate-left card-icon"></i>
+            <h3>Paradas Industriais & Manutenção</h3>
+            <p>Mobilização de equipes multidisciplinares para manutenção preventiva, corretiva e diagnóstico rápido de falhas.</p>
+          </div>
+
+          <div class="bento-card reveal">
+            <i class="fa-solid fa-handshake-angle card-icon"></i>
+            <h3>Terceirização & Contratos Mensais</h3>
+            <p>Contratos contínuos de manutenção predial e industrial para garantir operação sem interrupções não programadas.</p>
+          </div>
+        </div>
+      </div>
     </section>
 
-    <!-- Nova Seção: Roadmap de Serviços (Visão Geral & CTA para Interativo) -->
-    <section id="roadmap" class="roadmap-preview-section">
-        <div class="container">
-            <div class="section-header reveal">
-                <span class="hero-tag"><i class="fa-solid fa-route"></i> Metodologia de Trabalho</span>
-                <h2>Roadmap de Execução Industrial</h2>
-                <p>Acompanhe a jornada completa de entrega do seu projeto, do diagnóstico inicial à manutenção contínua.</p>
-            </div>
-
-            <div class="roadmap-steps-preview reveal">
-                <div class="preview-step-card">
-                    <div class="step-num">01</div>
-                    <h4>Diagnóstico & Projeto</h4>
-                    <p>Vistoria técnica, mapeamento de demandas e projetos adequados à norma NR-10.</p>
-                </div>
-                <div class="preview-step-card">
-                    <div class="step-num">02</div>
-                    <h4>Caldeiraria & Fabricação</h4>
-                    <p>Confecção de tanques, estruturas, tubulações e soldagem MIG/TIG de alta precisão.</p>
-                </div>
-                <div class="preview-step-card">
-                    <div class="step-num">03</div>
-                    <h4>Montagem & Elétrica</h4>
-                    <p>Montagem de painéis CCM/QGBT, eletrocalhas, lançamento de cabos e SPDA.</p>
-                </div>
-                <div class="preview-step-card">
-                    <div class="step-num">04</div>
-                    <h4>Comissionamento</h4>
-                    <p>Partida de motores, ajustes em inversores e testes de carga sob rigorosas condições.</p>
-                </div>
-                <div class="preview-step-card">
-                    <div class="step-num">05</div>
-                    <h4>Manutenção & Equipas</h4>
-                    <p>Contratos preventivos/corretivos e fornecimento de equipes para paradas técnicas.</p>
-                </div>
-            </div>
-
-            <div class="roadmap-cta-container reveal">
-                <a href="roadmap_servicos.html" class="btn btn-primary btn-lg">
-                    <i class="fa-solid fa-layer-group"></i> Explorar Roadmap Interativo Completo <i class="fa-solid fa-arrow-right"></i>
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Seção de Governança Técnica, Qualidade e NR-10 -->
     <section class="differentials">
-        <div class="container">
-            <div class="section-header reveal">
-                <h2>Conformidade Técnica, Segurança & Qualidade Operacional</h2>
-                <p>Garantia de continuidade operacional sem riscos catastróficos para o seu negócio.</p>
-            </div>
-
-            <div class="diff-grid">
-                <div class="diff-card reveal">
-                    <i class="fa-solid fa-file-shield diff-icon"></i>
-                    <h4>Adequação NR-10 Garantida</h4>
-                    <p>Execução rigorosa baseada na Norma Regulamentadora NR-10, garantindo instalações elétricas 100% seguras e auditáveis.</p>
-                </div>
-
-                <div class="diff-card reveal">
-                    <i class="fa-solid fa-stopwatch diff-icon"></i>
-                    <h4>Agilidade em Paradas Industriais</h4>
-                    <p>Diagnóstico rápido de falhas e equipes focadas na retomada do processo produtivo no menor tempo possível.</p>
-                </div>
-
-                <div class="diff-card reveal">
-                    <i class="fa-solid fa-microscope diff-icon"></i>
-                    <h4>Inspeções & Comissionamento</h4>
-                    <p>Rotinas contínuas de inspeção técnica preventiva para eliminar paradas não programadas e falhas elétrico-mecânicas.</p>
-                </div>
-            </div>
+      <div class="container">
+        <div class="section-header reveal">
+          <h2>Conformidade Técnica & Qualidade Operacional</h2>
+          <p>Garantia de continuidade operacional e mitigação de riscos catastróficos.</p>
         </div>
+
+        <div class="diff-grid">
+          <div class="diff-card reveal">
+            <i class="fa-solid fa-file-shield diff-icon"></i>
+            <h3>Adequação NR-10 Garantida</h3>
+            <p>Execução rigorosa fundamentada na Norma Regulamentadora NR-10, garantindo instalações auditáveis e seguras.</p>
+          </div>
+          <div class="diff-card reveal">
+            <i class="fa-solid fa-truck-fast diff-icon"></i>
+            <h3>Pronta Resposta em Paradas</h3>
+            <p>Foco na retomada ágil do processo produtivo em paradas de fábrica e manutenções emergenciais.</p>
+          </div>
+          <div class="diff-card reveal">
+            <i class="fa-solid fa-microscope diff-icon"></i>
+            <h3>Inspeções & Comissionamento</h3>
+            <p>Rotinas contínuas de inspeções elétricas e mecânicas para atestar o pleno funcionamento da infraestrutura.</p>
+          </div>
+        </div>
+      </div>
     </section>
 
-    <!-- Seção de Público-Alvo / Segmentos Atendidos -->
-    <section id="segmentos" class="segments-section">
-        <div class="container">
-            <div class="section-header reveal">
-                <h2>Setores de Atuação Profissional</h2>
-                <p>Experiência e estrutura preparadas para operar em ambientes operacionais críticos.</p>
-            </div>
-
-            <div class="segments-grid reveal">
-                <div class="segment-item"><i class="fa-solid fa-industry"></i> Indústrias em Geral</div>
-                <div class="segment-item"><i class="fa-solid fa-anchor"></i> Portos e Estaleiros</div>
-                <div class="segment-item"><i class="fa-solid fa-building-user"></i> Empresas de Manutenção</div>
-                <div class="segment-item"><i class="fa-solid fa-helmet-safety"></i> Setor de Construção Civil</div>
-                <div class="segment-item"><i class="fa-solid fa-truck-ramp-box"></i> Transportadoras & Logística</div>
-                <div class="segment-item"><i class="fa-solid fa-warehouse"></i> Armazéns e Depósitos</div>
-                <div class="segment-item"><i class="fa-solid fa-compass-drafting"></i> Empresas de Engenharia</div>
-                <div class="segment-item"><i class="fa-solid fa-wrench"></i> Oficinas Industriais</div>
-            </div>
+    <section class="segments-section">
+      <div class="container">
+        <div class="section-header reveal">
+          <h2>Setores Atendidos em Rio Grande e Região</h2>
+          <p>Atuação preparada para ambientes operacionais de alta exigência técnica.</p>
         </div>
+
+        <div class="segments-grid reveal">
+          <div class="segment-item"><i class="fa-solid fa-anchor"></i> Portos, Terminais & Estaleiros</div>
+          <div class="segment-item"><i class="fa-solid fa-industry"></i> Indústrias & Unidades Fabris</div>
+          <div class="segment-item"><i class="fa-solid fa-building-user"></i> Construção Civil & Infraestrutura</div>
+          <div class="segment-item"><i class="fa-solid fa-truck-ramp-box"></i> Logística, Armazéns & Depósitos</div>
+          <div class="segment-item"><i class="fa-solid fa-screwdriver-wrench"></i> Oficinas & Empresas de Manutenção</div>
+          <div class="segment-item"><i class="fa-solid fa-compass-drafting"></i> Empresas de Engenharia</div>
+        </div>
+      </div>
     </section>
 
-    <!-- Formulário CRM e Contato -->
-    <section id="contato" class="contact">
-        <div class="container">
-            <div class="contact-grid">
-                
-                <!-- Formulário -->
-                <div class="contact-form-container reveal">
-                    <h2>Solicite uma Proposta Técnica</h2>
-                    <p>Fale diretamente com nossa equipe técnica para orçamentos de fabricação, manutenção ou mão de obra.</p>
-                    
-                    <form id="crm-form" class="contact-form">
-                        <div class="form-group">
-                            <label for="name">Nome Completo / Empresa *</label>
-                            <input type="text" id="name" required placeholder="Digite seu nome ou empresa">
-                        </div>
-                        <div class="form-group">
-                            <label for="email">E-mail Corporativo *</label>
-                            <input type="email" id="email" required placeholder="seu.nome@empresa.com.br">
-                        </div>
-                        <div class="form-group">
-                            <label for="phone">Telefone / WhatsApp *</label>
-                            <input type="tel" id="phone" required placeholder="(00) 00000-0000">
-                        </div>
-                        <div class="form-group">
-                            <label for="service">Serviço de Interesse *</label>
-                            <select id="service" required>
-                                <option value="">Selecione uma opção...</option>
-                                <option value="Metal Mecanica">Metal Mecânica & Caldeiraria</option>
-                                <option value="Eletrica Industrial">Elétrica Industrial & NR-10</option>
-                                <option value="Terceirizacao">Terceirização de Equipas / Mão de Obra</option>
-                                <option value="Paradas Industriais">Suporte em Paradas Industriais</option>
-                                <option value="Contrato Mensal">Contrato de Manutenção Contínua</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="message">Escopo Básico do Projetos / Demanda</label>
-                            <textarea id="message" rows="4" placeholder="Descreva sucintamente sua necessidade técnica..."></textarea>
-                        </div>
-                        <button type="submit" class="btn btn-primary btn-full">Enviar Solicitação Técnica <i class="fa-solid fa-paper-plane"></i></button>
-                        <div id="form-status" class="form-status"></div>
-                    </form>
-                </div>
-
-                <!-- Informações de Contato -->
-                <div class="contact-info reveal">
-                    <h3>Canais de Atendimento B2B</h3>
-                    <p>Atendimento especializado focado na resolução rápida de demandas operacionais e de engenharia.</p>
-                    
-                    <ul class="info-list">
-                        <li><i class="fa-solid fa-clock"></i> <strong>Atendimento:</strong> Plantão para Paradas Industriais</li>
-                        <li><i class="fa-brands fa-whatsapp"></i> <strong>WhatsApp Comercial:</strong> <a href="https://wa.me/5500000000000" target="_blank">(00) 00000-0000</a></li>
-                        <li><i class="fa-solid fa-envelope"></i> <strong>E-mail:</strong> contato@techsolutions.com.br</li>
-                        <li><i class="fa-solid fa-shield-halved"></i> <strong>Conformidade:</strong> Laudos NR-10, SPDA e Certificados</li>
-                    </ul>
-
-                    <div class="contact-card-highlight">
-                        <h4><i class="fa-solid fa-handshake"></i> Parceria Contínua</h4>
-                        <p> Oferecemos contratos mensais de manutenção preventiva mecânica e elétrica com plantão prioritário para emergências.</p>
-                    </div>
-                </div>
-
-            </div>
+    <section class="contact" id="contato">
+      <div class="container">
+        <div class="section-header reveal">
+          <h2>Solicite uma Proposta Técnica</h2>
+          <p>Fale diretamente com nossa equipe para orçamentos de fabricação, montagem ou mão de obra terceirizada.</p>
         </div>
-    </section>
 
-    <!-- Rodapé Global (Footer) -->
-    <footer class="footer">
-        <div class="container footer-container">
-            <div class="footer-info">
-                <h4>Tech Solutions</h4>
-                <p>Soluções completas em Engenharia, Metal Mecânica, Elétrica Industrial NR-10 e Terceirização de Mão de Obra Especializada.</p>
+        <div class="contact-grid">
+          <div class="contact-form-container reveal">
+            <h3>Envie suas Especificações</h3>
+            <form class="contact-form">
+              <div class="form-group">
+                <label for="name">Nome / Responsável Técnico</label>
+                <input type="text" id="name" placeholder="Seu nome completo" required>
+              </div>
+              <div class="form-group">
+                <label for="company">Empresa / Razão Social</label>
+                <input type="text" id="company" placeholder="Nome da sua empresa" required>
+              </div>
+              <div class="form-group">
+                <label for="email">E-mail Corporativo</label>
+                <input type="email" id="email" placeholder="nome@suaempresa.com.br" required>
+              </div>
+              <div class="form-group">
+                <label for="phone">Telefone / WhatsApp Comercial</label>
+                <input type="tel" id="phone" placeholder="(53) 90000-0000" required>
+              </div>
+              <div class="form-group">
+                <label for="subject">Divisão de Interesse</label>
+                <select id="subject" required>
+                  <option value="">Selecione a área principal</option>
+                  <option value="metal-mecanica">Metal Mecânica & Caldeiraria</option>
+                  <option value="eletrica-nr10">Elétrica Industrial & Adequação NR-10</option>
+                  <option value="paradas">Contratos de Manutenção / Paradas Industriais</option>
+                  <option value="outros">Outras Demandas Industriais</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="message">Resumo do Projeto ou Necessidade</label>
+                <textarea id="message" rows="4" placeholder="Descreva brevemente o escopo, volume ou prazo desejado..." required></textarea>
+              </div>
+              <button type="submit" class="btn btn-primary btn-full">
+                <i class="fa-solid fa-paper-plane"></i> Enviar Solicitação de Proposta
+              </button>
+            </form>
+          </div>
+
+          <div class="contact-info reveal">
+            <h3>Canais de Atendimento B2B</h3>
+            <ul class="info-list">
+              <li>
+                <i class="fa-solid fa-building"></i> 
+                <span><strong>Razão Social:</strong> E. de O. Xavier & Cia LTDA</span>
+              </li>
+              <li>
+                <i class="fa-solid fa-id-card"></i> 
+                <span><strong>CNPJ:</strong> 59.437.805/0001-40</span>
+              </li>
+              <li>
+                <i class="fa-solid fa-location-dot"></i> 
+                <span><strong>Sede / Atuação:</strong> Rio Grande / RS</span>
+              </li>
+              <li>
+                <i class="fa-solid fa-clock"></i> 
+                <span><strong>Regime:</strong> Plantão de Paradas Industriais & Atendimento Comercial</span>
+              </li>
+            </ul>
+            <div class="contact-card-highlight">
+              <h4>Atendimento Direto sem Intermediários</h4>
+              <p>Nossa engenharia e equipe de propostas analisa suas especificações técnicos e retorna em até 24h úteis.</p>
             </div>
-            <div class="footer-links">
-                <h5>Navegação</h5>
-                <ul>
-                    <li><a href="#home">Home</a></li>
-                    <li><a href="#solucoes">Soluções</a></li>
-                    <li><a href="#roadmap">Roadmap de Serviços</a></li>
-                    <li><a href="roadmap_servicos.html">Roadmap Interativo</a></li>
-                    <li><a href="#metal-mecanica">Metal Mecânica</a></li>
-                    <li><a href="#eletrica">Elétrica Industrial</a></li>
-                    <li><a href="#terceirizacao">Terceirização</a></li>
-                </ul>
-            </div>
-            <div class="footer-legal">
-                <h5>Segurança & Privacidade</h5>
-                <ul>
-                    <li><a href="#">Política de Privacidade</a></li>
-    
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <app-footer></app-footer>
+
+  <script src="script.js" defer></script>
+</body>
+</html>
