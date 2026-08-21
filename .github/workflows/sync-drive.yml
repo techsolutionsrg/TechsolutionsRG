@@ -21,59 +21,54 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install pydrive2
+          pip install google-api-python-client google-auth-httplib2 google-auth-oauthlib
 
-      - name: Authenticate and Sync to Google Drive
+      - name: Authenticate, Merge and Sync
         env:
           GCP_SA_KEY: ${{ secrets.GCP_SA_KEY }}
-          GDRIVE_FOLDER_ID: ${{ secrets.GDRIVE_FOLDER_ID }}
+          GDRIVE_FILE_ID: ${{ secrets.GDRIVE_FILE_ID }}
         run: |
           cat << 'EOF' > sync.py
           import os
           import json
-          from pydrive2.auth import GoogleAuth
-          from pydrive2.drive import GoogleDrive
+          from google.oauth2.service_account import Credentials
+          from googleapiclient.discovery import build
+          from googleapiclient.http import MediaFileUpload
 
-          # Salva a chave temporariamente para a biblioteca autenticar
-          key_data = json.loads(os.environ['GCP_SA_KEY'])
-          with open('sa_key.json', 'w') as f:
-              json.dump(key_data, f)
+          creds_json = json.loads(os.environ['GCP_SA_KEY'])
+          file_id = os.environ['GDRIVE_FILE_ID']
+          
+          scopes = ['https://www.googleapis.com/auth/drive']
+          creds = Credentials.from_service_account_info(creds_json, scopes=scopes)
+          service = build('drive', 'v3', credentials=creds)
 
-          folder_id = os.environ['GDRIVE_FOLDER_ID']
-
-          settings = {
-              "client_config_backend": "service",
-              "service_config": {
-                  "client_json_file_path": "sa_key.json",
-              }
-          }
-
-          gauth = GoogleAuth(settings=settings)
-          gauth.ServiceAuth()
-          drive = GoogleDrive(gauth)
-
-          print(f"Lendo diretório: {os.getcwd()}")
-
-          for root, dirs, files in os.walk('.'):
-              if '.git' in root or root.startswith('./.github'):
-                  continue
-              for file in files:
-                  if file in ['sync.py', 'sa_key.json']:
+          output_filename = 'conhecimento_gemini.txt'
+          print("Compilando código fonte...")
+          
+          with open(output_filename, 'w', encoding='utf-8') as outfile:
+              for root, dirs, files in os.walk('.'):
+                  if '.git' in root or root.startswith('./.github'):
                       continue
-                  filepath = os.path.join(root, file)
-                  
-                  # Cria e envia o arquivo forçando o vínculo direto à pasta do destinatário
-                  gfile = drive.CreateFile({
-                      'title': file,
-                      'parents': [{'id': folder_id}]
-                  })
-                  gfile.SetContentFile(filepath)
-                  gfile.Upload(param={'supportsAllDrives': True})
-                  print(f'Sincronizado: {filepath}')
+                  for file in files:
+                      if file in ['sync.py', output_filename]:
+                          continue
+                      filepath = os.path.join(root, file)
+                      try:
+                          with open(filepath, 'r', encoding='utf-8') as infile:
+                              outfile.write(f"\n\n{'='*40}\n")
+                              outfile.write(f"ARQUIVO: {filepath}\n")
+                              outfile.write(f"{'='*40}\n\n")
+                              outfile.write(infile.read())
+                      except UnicodeDecodeError:
+                          pass # Ignora arquivos que não são texto (imagens, etc)
 
-          # Remove a chave temporária ao terminar
-          if os.path.exists('sa_key.json'):
-              os.remove('sa_key.json')
+          print("Enviando atualização para o Google Drive...")
+          media = MediaFileUpload(output_filename, mimetype='text/plain')
+          service.files().update(
+              fileId=file_id,
+              media_body=media
+          ).execute()
+          print("Sucesso! Cérebro do Gemini atualizado.")
           EOF
           python sync.py
           
