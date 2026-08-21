@@ -38,12 +38,12 @@ jobs:
           creds_json = json.loads(os.environ['GCP_SA_KEY'])
           folder_id = os.environ['GDRIVE_FOLDER_ID']
           
-          scopes = ['https://www.googleapis.com/auth/drive.file']
+          scopes = ['https://www.googleapis.com/auth/drive']
           creds = Credentials.from_service_account_info(creds_json, scopes=scopes)
           service = build('drive', 'v3', credentials=creds)
 
           for root, dirs, files in os.walk('.'):
-              if '.git' in root:
+              if '.git' in root or 'sync.py' in files:
                   continue
               for file in files:
                   filepath = os.path.join(root, file)
@@ -51,7 +51,8 @@ jobs:
                       'name': file,
                       'parents': [folder_id]
                   }
-                  media = MediaFileUpload(filepath, resumable=True)
+                  # Removido resumable=True para evitar validação de cota na conta de serviço
+                  media = MediaFileUpload(filepath)
                   uploaded_file = service.files().create(
                       body=file_metadata,
                       media_body=media,
