@@ -1,4 +1,6 @@
-/* Var & Reset */
+/* ==========================================
+   1. VARIÁVEIS, RESET E CONFIGURAÇÕES GERAIS
+   ========================================== */
 :root {
     --cyan: #00B2B2;
     --cyan-hover: #00C8B3;
@@ -27,8 +29,7 @@ body {
     overflow-x: hidden;
 }
 
-/* Tipografia */
-h1, h2, h3, h4 {
+h1, h2, h3, h4, h5 {
     color: #FFFFFF;
     font-weight: 700;
 }
@@ -49,7 +50,9 @@ a:hover {
     padding: 0 20px;
 }
 
-/* Botões */
+/* ==========================================
+   2. BOTÕES E ELEMENTOS DE AÇÃO
+   ========================================== */
 .btn {
     display: inline-flex;
     align-items: center;
@@ -59,7 +62,8 @@ a:hover {
     font-weight: 600;
     cursor: pointer;
     border: none;
-    transition: transform 0.2s ease, background-color 0.3s ease;
+    transition: transform 0.2s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+    white-space: nowrap;
 }
 
 .btn-primary {
@@ -84,12 +88,33 @@ a:hover {
     color: var(--bg-dark);
 }
 
+.btn-outline {
+    border: 1px solid rgba(229, 231, 235, 0.3);
+    color: var(--silver);
+}
+
+.btn-outline:hover {
+    border-color: var(--cyan);
+    color: var(--cyan);
+}
+
 .btn-full {
     width: 100%;
     justify-content: center;
 }
 
-/* Header Fixo */
+.btn-lg {
+    padding: 16px 32px;
+    font-size: 1.05rem;
+}
+
+.mobile-menu-cta {
+    display: none;
+}
+
+/* ==========================================
+   3. CABEÇALHO GLOBAL (HEADER)
+   ========================================== */
 .header {
     position: fixed;
     top: 0;
@@ -123,7 +148,8 @@ a:hover {
 
 .nav-menu {
     display: flex;
-    gap: 25px;
+    align-items: center;
+    gap: 20px;
 }
 
 .nav-menu a {
@@ -137,14 +163,11 @@ a:hover {
 
 .mobile-toggle {
     display: none;
-    background: none;
-    border: none;
-    color: var(--silver);
-    font-size: 1.5rem;
-    cursor: pointer;
 }
 
-/* Hero Section (Página Inicial) */
+/* ==========================================
+   4. HERO SECTION
+   ========================================== */
 .hero {
     padding: 140px 0 60px 0;
 }
@@ -181,6 +204,12 @@ a:hover {
     margin-bottom: 25px;
 }
 
+.hero-actions {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
 .hero-banner-container {
     background: linear-gradient(135deg, var(--bg-card), var(--bg-card-hover));
     padding: 30px;
@@ -199,8 +228,10 @@ a:hover {
     font-size: 0.95rem;
 }
 
-/* Seções Gerais */
-.services, .differentials, .about, .contact {
+/* ==========================================
+   5. BENTO GRID & PORTFÓLIO DE SERVIÇOS
+   ========================================== */
+.services, .differentials, .segments-section, .about, .contact {
     padding: 80px 0;
 }
 
@@ -218,7 +249,6 @@ a:hover {
     color: var(--gray-muted);
 }
 
-/* Bento Grid */
 .bento-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -240,14 +270,25 @@ a:hover {
     background-color: var(--bg-card-hover);
 }
 
-.bento-large {
+.bento-large, .bento-full {
     grid-column: span 3;
 }
 
 .card-icon {
     font-size: 2rem;
     color: var(--cyan);
-    margin-bottom: 20px;
+    margin-bottom: 15px;
+}
+
+.card-badge {
+    display: inline-block;
+    font-size: 0.75rem;
+    color: var(--cyan);
+    background: rgba(0, 178, 178, 0.1);
+    padding: 4px 10px;
+    border-radius: 12px;
+    margin-bottom: 10px;
+    width: fit-content;
 }
 
 .bento-card h3 {
@@ -259,244 +300,110 @@ a:hover {
     color: var(--gray-muted);
     font-size: 0.95rem;
     margin-bottom: 20px;
-    flex-grow: 1;
 }
 
-.specs-list {
-    list-style: none;
-    margin-top: auto;
-}
-
-.specs-list li {
-    font-size: 0.9rem;
-    color: var(--silver);
-    margin-bottom: 8px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-}
-
-.specs-list i {
-    color: var(--cyan);
-}
-
-/* Diferenciais */
-.diff-grid {
+.sub-services-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
     gap: 20px;
-}
-
-.diff-card {
-    background: var(--bg-card);
-    padding: 30px;
-    border-radius: 10px;
-    text-align: center;
-    border: 1px solid rgba(229, 231, 235, 0.05);
-}
-
-.diff-icon {
-    font-size: 2.2rem;
-    color: var(--cobalt);
-    margin-bottom: 15px;
-}
-
-.diff-card h4 {
-    margin-bottom: 10px;
-    font-size: 1.1rem;
-}
-
-.diff-card p {
-    color: var(--gray-muted);
-    font-size: 0.9rem;
-}
-
-/* Sobre Nós */
-.about-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 40px;
-    align-items: center;
-}
-
-.about-text p {
-    color: var(--gray-muted);
-    margin-top: 15px;
-}
-
-.about-stats {
-    display: flex;
-    gap: 20px;
-}
-
-.stat-box {
-    background-color: var(--bg-card);
-    padding: 30px;
-    border-radius: 12px;
-    flex: 1;
-    text-align: center;
-    border: 1px solid rgba(0, 178, 178, 0.2);
-}
-
-.stat-number {
-    display: block;
-    font-size: 2rem;
-    font-weight: 700;
-    color: var(--cyan);
-}
-
-.stat-label {
-    color: var(--silver);
-    font-size: 0.9rem;
-}
-
-/* Contato */
-.contact-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 40px;
-    align-items: start;
-}
-
-.contact-form-container, .contact-info {
-    background: var(--bg-card);
-    padding: 30px;
-    border-radius: 12px;
-    border: 1px solid rgba(229, 231, 235, 0.05);
-}
-
-.contact-form {
     margin-top: 20px;
 }
 
-.form-group {
-    margin-bottom: 15px;
+.sub-service-item {
+    background: rgba(17, 23, 32, 0.5);
+    padding: 15px;
+    border-radius: 8px;
+    border: 1px solid rgba(229, 231, 235, 0.05);
 }
 
-.form-group label {
-    display: block;
-    margin-bottom: 5px;
+.sub-service-item h4 {
+    font-size: 0.95rem;
+    margin-bottom: 6px;
+    color: var(--cyan);
+}
+
+.sub-service-item p {
     font-size: 0.85rem;
-    color: var(--silver);
+    color: var(--gray-muted);
 }
 
-.form-group input, .form-group select, .form-group textarea {
-    width: 100%;
-    padding: 10px;
-    border-radius: 6px;
-    border: 1px solid rgba(229, 231, 235, 0.2);
-    background-color: var(--bg-dark);
-    color: var(--silver);
-    font-family: var(--font-main);
-}
-
-.form-group input:focus, .form-group select:focus, .form-group textarea:focus {
-    outline: none;
-    border-color: var(--cyan);
-}
-
-.form-status {
+.profiles-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
     margin-top: 15px;
-    font-size: 0.9rem;
-    text-align: center;
 }
 
-.info-list {
-    list-style: none;
-    margin-top: 20px;
-}
-
-.info-list li {
-    margin-bottom: 16px;
-    display: flex;
+.tag {
+    background: rgba(37, 78, 219, 0.2);
+    border: 1px solid var(--cobalt);
+    color: var(--silver);
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    display: inline-flex;
     align-items: center;
-    gap: 12px;
-    font-size: 0.95rem;
-}
-
-.info-list i {
-    color: var(--cyan);
-    font-size: 1.1rem;
-}
-
-/* Footer */
-.footer {
-    background-color: #0B0F15;
-    padding: 50px 0 20px 0;
-    border-top: 1px solid rgba(229, 231, 235, 0.05);
-}
-
-.footer-container {
-    display: grid;
-    grid-template-columns: 2fr 1fr 1fr 1fr;
-    gap: 30px;
-    margin-bottom: 30px;
-}
-
-.footer-info h4 {
-    color: var(--cyan);
-    margin-bottom: 10px;
-}
-
-.footer-info p {
-    color: var(--gray-muted);
-    font-size: 0.85rem;
-}
-
-.footer h5 {
-    margin-bottom: 15px;
-    font-size: 0.95rem;
-}
-
-.footer ul {
-    list-style: none;
-}
-
-.footer ul li {
-    margin-bottom: 8px;
-}
-
-.footer ul li a {
-    color: var(--gray-muted);
-    font-size: 0.85rem;
-}
-
-.footer ul li a:hover {
-    color: var(--silver);
-}
-
-.social-icons {
-    display: flex;
-    gap: 15px;
-}
-
-.social-icons a {
-    font-size: 1.2rem;
-    color: var(--silver);
-}
-
-.footer-bottom {
-    text-align: center;
-    font-size: 0.8rem;
-    color: var(--gray-muted);
-    border-top: 1px solid rgba(229, 231, 235, 0.05);
-    padding-top: 20px;
-}
-
-/* Scroll Animation Reveal */
-.reveal {
-    opacity: 0;
-    transform: translateY(30px);
-    transition: all 0.6s cubic-bezier(0.5, 0, 0, 1);
-}
-
-.reveal.active {
-    opacity: 1;
-    transform: translateY(0);
+    gap: 6px;
 }
 
 /* ==========================================
-   MÓDULO: ROADMAP DE SERVIÇOS
+   6. ROADMAP (PREVIEW NA HOME)
+   ========================================== */
+.roadmap-preview-section {
+    padding: 80px 0;
+    background: linear-gradient(180deg, var(--bg-dark) 0%, rgba(0, 178, 178, 0.05) 50%, var(--bg-dark) 100%);
+    border-top: 1px solid rgba(229, 231, 235, 0.05);
+    border-bottom: 1px solid rgba(229, 231, 235, 0.05);
+}
+
+.roadmap-steps-preview {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 15px;
+    margin-bottom: 40px;
+}
+
+.preview-step-card {
+    background: var(--bg-card);
+    padding: 24px 18px;
+    border-radius: 12px;
+    border: 1px solid rgba(229, 231, 235, 0.08);
+    position: relative;
+    transition: transform 0.3s ease, border-color 0.3s ease, background-color 0.3s ease;
+}
+
+.preview-step-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--cyan);
+    background: var(--bg-card-hover);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+.preview-step-card .step-num {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--cyan);
+    margin-bottom: 10px;
+    line-height: 1;
+}
+
+.preview-step-card h4 {
+    font-size: 1.05rem;
+    margin-bottom: 8px;
+}
+
+.preview-step-card p {
+    font-size: 0.85rem;
+    color: var(--gray-muted);
+    line-height: 1.4;
+}
+
+.roadmap-cta-container {
+    text-align: center;
+}
+
+/* ==========================================
+   7. ROADMAP (PÁGINA DEDICADA INTERATIVA)
    ========================================== */
 .roadmap-hero {
     padding: 120px 0 30px 0;
@@ -530,7 +437,6 @@ a:hover {
     margin-bottom: 25px;
 }
 
-/* Filtros */
 .filter-container {
     display: flex;
     justify-content: center;
@@ -561,7 +467,6 @@ a:hover {
     box-shadow: 0 4px 12px rgba(0, 178, 178, 0.35);
 }
 
-/* Linha do Tempo (Timeline) */
 .roadmap-timeline {
     position: relative;
     padding: 20px 0;
@@ -636,17 +541,6 @@ a:hover {
     font-weight: 600;
 }
 
-.step-card h3 {
-    font-size: 1.15rem;
-    margin-bottom: 6px;
-}
-
-.step-card p {
-    color: var(--gray-muted);
-    font-size: 0.9rem;
-    margin-bottom: 12px;
-}
-
 .click-action-trigger {
     display: inline-flex;
     align-items: center;
@@ -660,7 +554,6 @@ a:hover {
     border: 1px solid var(--cyan);
 }
 
-/* Painel de Detalhes Interativo */
 .details-panel {
     background: var(--bg-card);
     border: 2px solid var(--cyan);
@@ -699,11 +592,6 @@ a:hover {
     cursor: pointer;
     font-size: 1.2rem;
     line-height: 1;
-    transition: background 0.3s;
-}
-
-.panel-close:hover {
-    background: rgba(255, 255, 255, 0.2);
 }
 
 .deliverables-list {
@@ -735,7 +623,204 @@ a:hover {
     text-align: center;
 }
 
-/* Responsividade Mobile-First & Desktop Layouts */
+/* ==========================================
+   8. DIFERENCIAIS, SEGMENTOS & CONTATO
+   ========================================== */
+.diff-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.diff-card {
+    background: var(--bg-card);
+    padding: 30px;
+    border-radius: 10px;
+    text-align: center;
+    border: 1px solid rgba(229, 231, 235, 0.05);
+}
+
+.diff-icon {
+    font-size: 2.2rem;
+    color: var(--cobalt);
+    margin-bottom: 15px;
+}
+
+.segments-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 15px;
+}
+
+.segment-item {
+    background: var(--bg-card);
+    padding: 18px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-weight: 600;
+    border: 1px solid rgba(229, 231, 235, 0.05);
+}
+
+.segment-item i {
+    color: var(--cyan);
+}
+
+.contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+}
+
+.contact-form-container, .contact-info {
+    background: var(--bg-card);
+    padding: 30px;
+    border-radius: 12px;
+    border: 1px solid rgba(229, 231, 235, 0.05);
+}
+
+.contact-form {
+    margin-top: 20px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 0.85rem;
+}
+
+.form-group input, .form-group select, .form-group textarea {
+    width: 100%;
+    padding: 10px;
+    border-radius: 6px;
+    border: 1px solid rgba(229, 231, 235, 0.2);
+    background-color: var(--bg-dark);
+    color: var(--silver);
+    font-family: var(--font-main);
+}
+
+.form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+    outline: none;
+    border-color: var(--cyan);
+}
+
+.form-status {
+    margin-top: 15px;
+    font-size: 0.9rem;
+    text-align: center;
+}
+
+.info-list {
+    list-style: none;
+    margin: 20px 0;
+}
+
+.info-list li {
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.info-list i {
+    color: var(--cyan);
+}
+
+.contact-card-highlight {
+    background: rgba(0, 178, 178, 0.1);
+    border: 1px solid var(--cyan);
+    padding: 15px;
+    border-radius: 8px;
+}
+
+/* ==========================================
+   9. RODAPÉ (FOOTER)
+   ========================================== */
+.footer {
+    background-color: #0B0F15;
+    padding: 50px 0 20px 0;
+    border-top: 1px solid rgba(229, 231, 235, 0.05);
+}
+
+.footer-container {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 30px;
+    margin-bottom: 30px;
+}
+
+.footer-info h4 {
+    color: var(--cyan);
+    margin-bottom: 10px;
+}
+
+.footer-info p {
+    color: var(--gray-muted);
+    font-size: 0.85rem;
+}
+
+.footer h5 {
+    margin-bottom: 15px;
+    font-size: 0.95rem;
+}
+
+.footer ul {
+    list-style: none;
+}
+
+.footer ul li {
+    margin-bottom: 8px;
+}
+
+.footer ul li a {
+    color: var(--gray-muted);
+    font-size: 0.85rem;
+}
+
+.footer ul li a:hover {
+    color: var(--silver);
+}
+
+.social-icons {
+    display: flex;
+    gap: 15px;
+}
+
+.social-icons a {
+    font-size: 1.2rem;
+    color: var(--silver);
+}
+
+.footer-bottom {
+    text-align: center;
+    font-size: 0.8rem;
+    color: var(--gray-muted);
+    border-top: 1px solid rgba(229, 231, 235, 0.05);
+    padding-top: 20px;
+}
+
+/* ==========================================
+   10. REVELAÇÃO E ANIMAÇÕES DE SCROLL
+   ========================================== */
+.reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s cubic-bezier(0.5, 0, 0, 1), transform 0.6s cubic-bezier(0.5, 0, 0, 1);
+}
+
+.reveal.active, body:not(.js-loaded) .reveal {
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+}
+
+/* ==========================================
+   11. ADAPTAÇÕES RESPONSIVAS & MOBILE-FIRST
+   ========================================== */
 @media (min-width: 769px) {
     .roadmap-timeline::before {
         left: 50%;
@@ -774,8 +859,77 @@ a:hover {
     }
 }
 
+@media (max-width: 1024px) {
+    .roadmap-steps-preview {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
 @media (max-width: 900px) {
-    .hero-grid, .about-grid, .contact-grid {
+    /* Oculta botão fora do menu no mobile */
+    .header-container > .nav-cta {
+        display: none !important;
+    }
+
+    /* Estilização do Botão Hambúrguer Mobile */
+    .mobile-toggle {
+        display: flex !important;
+        align-items: center;
+        justify-content: center;
+        background: transparent;
+        border: 1px solid rgba(0, 178, 178, 0.4);
+        color: var(--cyan);
+        width: 42px;
+        height: 42px;
+        border-radius: 8px;
+        font-size: 1.3rem;
+        cursor: pointer;
+        transition: all 0.2s ease;
+    }
+
+    .mobile-toggle:active {
+        background: rgba(0, 178, 178, 0.2);
+    }
+
+    /* Gaveta de Navegação Mobile */
+    .nav-menu {
+        display: none;
+        position: absolute;
+        top: 70px;
+        left: 0;
+        width: 100%;
+        background-color: #111720;
+        flex-direction: column;
+        align-items: stretch;
+        padding: 20px 24px;
+        gap: 12px;
+        border-bottom: 2px solid var(--cyan);
+        box-shadow: 0 12px 30px rgba(0, 0, 0, 0.7);
+        z-index: 1000;
+    }
+
+    .nav-menu.active {
+        display: flex !important;
+    }
+
+    .nav-menu a {
+        padding: 10px 0;
+        border-bottom: 1px solid rgba(229, 231, 235, 0.08);
+        font-size: 1rem;
+        color: var(--silver);
+    }
+
+    /* Botão CTA dentro do menu suspenso */
+    .mobile-menu-cta {
+        display: inline-flex !important;
+        margin-top: 10px;
+        width: 100%;
+        justify-content: center;
+        border-bottom: none !important;
+    }
+
+    /* Layouts de conteúdo no mobile */
+    .hero-grid, .contact-grid, .footer-container {
         grid-template-columns: 1fr;
     }
     
@@ -783,35 +937,17 @@ a:hover {
         grid-template-columns: 1fr;
     }
 
-    .bento-large {
+    .bento-large, .bento-full {
         grid-column: span 1;
     }
+}
 
-    .footer-container {
+@media (max-width: 640px) {
+    .roadmap-steps-preview {
         grid-template-columns: 1fr;
     }
 
-    .nav-menu {
-        display: none;
-        position: absolute;
-        top: 70px;
-        left: 0;
-        width: 100%;
-        background-color: var(--bg-dark);
-        flex-direction: column;
-        padding: 20px;
-        border-bottom: 1px solid var(--bg-card);
-    }
-
-    .nav-menu.active {
-        display: flex;
-    }
-
-    .nav-cta {
-        display: none;
-    }
-
-    .mobile-toggle {
-        display: block;
+    .hero-title {
+        font-size: 2rem;
     }
 }
