@@ -63,3 +63,12 @@ jobs:
           EOF
           python sync.py
           
+          # ... (código anterior igual)
+          service = build('drive', 'v3', credentials=creds)
+          
+          # ADICIONE ESTA LINHA PARA TESTAR:
+          print(f"Diretório atual de trabalho: {os.getcwd()}")
+
+          for root, dirs, files in os.walk('.'):
+              # ...
+              
