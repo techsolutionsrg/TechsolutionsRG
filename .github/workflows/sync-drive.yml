@@ -55,6 +55,7 @@ jobs:
                   uploaded_file = service.files().create(
                       body=file_metadata,
                       media_body=media,
+                      supportsAllDrives=True,
                       fields='id'
                   ).execute()
                   print(f'Sincronizado: {filepath}')
