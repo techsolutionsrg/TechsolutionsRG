@@ -42,16 +42,19 @@ jobs:
           creds = Credentials.from_service_account_info(creds_json, scopes=scopes)
           service = build('drive', 'v3', credentials=creds)
 
+          print(f"Buscando arquivos em: {os.getcwd()}")
+
           for root, dirs, files in os.walk('.'):
-              if '.git' in root or 'sync.py' in files:
+              if '.git' in root or root.startswith('./.github'):
                   continue
               for file in files:
+                  if file == 'sync.py':
+                      continue
                   filepath = os.path.join(root, file)
                   file_metadata = {
                       'name': file,
                       'parents': [folder_id]
                   }
-                  # Removido resumable=True para evitar validação de cota na conta de serviço
                   media = MediaFileUpload(filepath)
                   uploaded_file = service.files().create(
                       body=file_metadata,
@@ -63,12 +66,3 @@ jobs:
           EOF
           python sync.py
           
-          # ... (código anterior igual)
-          service = build('drive', 'v3', credentials=creds)
-          
-          # ADICIONE ESTA LINHA PARA TESTAR:
-          print(f"Diretório atual de trabalho: {os.getcwd()}")
-
-          for root, dirs, files in os.walk('.'):
-              # ...
-              
