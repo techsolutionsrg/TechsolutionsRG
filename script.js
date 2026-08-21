@@ -1,26 +1,18 @@
 document.addEventListener('DOMContentLoaded', () => {
-  
-  // Event Delegation Unificada para Interações Globais
   document.addEventListener('click', (e) => {
     
-    // ==========================================
     // 1. MENU MOBILE
-    // ==========================================
     const toggleBtn = e.target.closest('#mobile-toggle');
     const navMenu = document.getElementById('nav-menu');
-
+    
     if (toggleBtn && navMenu) {
       const isOpen = navMenu.classList.toggle('active');
       toggleBtn.setAttribute('aria-expanded', isOpen);
-
       const icon = toggleBtn.querySelector('i');
-      if (icon) {
-        icon.className = isOpen ? 'fa-solid fa-xmark' : 'fa-solid fa-bars';
-      }
+      if (icon) icon.className = isOpen ? 'fa-solid fa-xmark' : 'fa-solid fa-bars';
       return;
     }
-
-    // Fechar menu mobile ao clicar em links
+    
     if (e.target.closest('#nav-menu a')) {
       if (navMenu && navMenu.classList.contains('active')) {
         navMenu.classList.remove('active');
@@ -33,34 +25,32 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }
 
-    // ==========================================
     // 2. ROADMAP: FILTROS POR CATEGORIA
-    // ==========================================
     const filterBtn = e.target.closest('.filter-btn');
     if (filterBtn) {
       const category = filterBtn.getAttribute('data-filter');
       document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
       filterBtn.classList.add('active');
-
-      const steps = document.querySelectorAll('.roadmap-step');
-      steps.forEach(step => {
-        const stepCategory = step.getAttribute('data-category');
-        if (!category || category === 'all' || stepCategory === category) {
+      
+      document.querySelectorAll('.roadmap-step').forEach(step => {
+        const stepCategory = step.getAttribute('data-category') || '';
+        // CORREÇÃO: Utiliza split(' ') para identificar sub-tags
+        if (!category || category === 'all' || stepCategory.split(' ').includes(category)) {
           step.style.display = 'block';
         } else {
           step.style.display = 'none';
         }
       });
+
+      // Fechar modal lateral ao filtrar
+      const detailsPanel = document.getElementById('details-panel');
+      if (detailsPanel) detailsPanel.classList.remove('active');
+      document.querySelectorAll('.roadmap-step').forEach(s => s.classList.remove('active'));
       return;
     }
 
-    // ==========================================
     // 3. ROADMAP: EXIBIR / OCULTAR DETALHES DO PASSO
-    // ==========================================
-    const stepTrigger = e.target.closest('.click-action-trigger, .roadmap-step, [data-target]');
     const closePanelBtn = e.target.closest('.panel-close');
-
-    // Botão de Fechar Painel de Detalhes (se houver)
     if (closePanelBtn) {
       const panel = closePanelBtn.closest('.details-panel');
       if (panel) panel.classList.remove('active');
@@ -68,39 +58,43 @@ document.addEventListener('DOMContentLoaded', () => {
       return;
     }
 
+    const stepTrigger = e.target.closest('.roadmap-step');
     if (stepTrigger) {
-      const stepCard = stepTrigger.closest('.roadmap-step') || stepTrigger;
-      const targetSelector = stepTrigger.getAttribute('data-target') || stepCard.getAttribute('data-target');
+      const detailsPanel = document.getElementById('details-panel');
       
-      // Procura o painel de detalhes no card atual ou painel global
-      let detailsPanel = targetSelector ? document.querySelector(targetSelector) : null;
-      if (!detailsPanel) {
-        detailsPanel = stepCard.querySelector('.details-panel') || document.getElementById('details-panel');
-      }
-
-      const isCurrentlyActive = stepCard.classList.contains('active');
-
       if (detailsPanel) {
-        const isPanelActive = detailsPanel.classList.contains('active');
+        // CORREÇÃO: Puxa o título e lista do card clicado e insere no painel
+        const title = stepTrigger.getAttribute('data-title');
+        const deliverables = stepTrigger.getAttribute('data-deliverables');
         
-        // Alterna os estados ativos
-        document.querySelectorAll('.details-panel').forEach(p => p.classList.remove('active'));
-        document.querySelectorAll('.roadmap-step').forEach(s => s.classList.remove('active'));
-
-        if (!isPanelActive || !isCurrentlyActive) {
-          detailsPanel.classList.add('active');
-          stepCard.classList.add('active');
+        if (title && deliverables) {
+            document.getElementById('panel-title').innerText = title;
+            const ul = document.getElementById('panel-deliverables');
+            ul.innerHTML = '';
+            
+            // Divide o texto do HTML pela barra "|"
+            deliverables.split('|').forEach(item => {
+                const li = document.createElement('li');
+                li.innerText = item;
+                ul.appendChild(li);
+            });
         }
-      } else {
-        // Fallback para toggle de classe direto na div do card
-        stepCard.classList.toggle('active');
+
+        const isCurrentlyActive = stepTrigger.classList.contains('active');
+        document.querySelectorAll('.roadmap-step').forEach(s => s.classList.remove('active'));
+        
+        if (!isCurrentlyActive) {
+          detailsPanel.classList.add('active');
+          stepTrigger.classList.add('active');
+          setTimeout(() => detailsPanel.scrollIntoView({ behavior: 'smooth', block: 'nearest' }), 100);
+        } else {
+          detailsPanel.classList.remove('active');
+        }
       }
     }
   });
 
-  // ==========================================
   // 4. ANIMAÇÕES DE SCROLL REVEAL
-  // ==========================================
   const revealElements = document.querySelectorAll('.reveal');
   if (revealElements.length > 0) {
     const revealObserver = new IntersectionObserver((entries, observer) => {
@@ -110,11 +104,7 @@ document.addEventListener('DOMContentLoaded', () => {
           observer.unobserve(entry.target);
         }
       });
-    }, {
-      threshold: 0.15,
-      rootMargin: '0px 0px -50px 0px'
-    });
-
+    }, { threshold: 0.15, rootMargin: '0px 0px -50px 0px' });
     revealElements.forEach(el => revealObserver.observe(el));
   }
 });

@@ -3,155 +3,283 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Roadmap de Serviços | Tech Solutions RG</title>
-    <meta name="description" content="Navegue pela jornada completa de execução da Tech Solutions RG: do diagnóstico e caldeiraria à montagem, automação NR-10 e manutenção contínua.">
-    
-    <!-- Fonts & Icons -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <!-- CSS Externo -->
-    <link rel="stylesheet" href="style.css">
+    <title>Roadmap de Serviços Detalhado - Tech Solutions RG</title>
+    <style>
+        :root { 
+            --cyan: #00B2B2; 
+            --cyan-hover: #00C8B3; 
+            --cobalt: #254EDB; 
+            --cobalt-dark: #1E3A8A; 
+            --silver: #E5E7EB; 
+            --gray-muted: #9CA3AF; 
+            --bg-dark: #111720; 
+            --bg-card: #1B2430; 
+            --bg-card-hover: #232E3D; 
+            --font-main: 'Source Sans Pro', sans-serif; 
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
+        body { font-family: var(--font-main); background-color: var(--bg-dark); color: var(--silver); line-height: 1.6; overflow-x: hidden; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        
+        /* Cabeçalho da Seção */
+        .roadmap-hero { padding: 120px 0 30px 0; text-align: center; background: radial-gradient(circle at top, rgba(0, 178, 178, 0.15) 0%, transparent 70%); }
+        .roadmap-hero h1 { font-size: 2.5rem; margin-bottom: 10px; color: #FFFFFF; }
+        .roadmap-hero p { max-width: 700px; margin: 0 auto 15px; color: var(--gray-muted); font-size: 1rem; }
+        
+        .instruction-banner { background: rgba(0, 178, 178, 0.12); border: 1px dashed var(--cyan); color: var(--cyan-hover); padding: 10px 16px; border-radius: 8px; display: inline-flex; align-items: center; gap: 8px; font-size: 0.85rem; font-weight: 600; margin-bottom: 25px; }
+
+        /* Timeline de Passos */
+        .roadmap-timeline { position: relative; padding: 20px 0; margin-bottom: 30px; }
+        .roadmap-timeline::before { content: ''; position: absolute; left: 20px; top: 0; bottom: 0; width: 4px; background: linear-gradient(180deg, var(--cyan), var(--cobalt)); border-radius: 2px; }
+        
+        .roadmap-step { position: relative; margin-bottom: 25px; width: 100%; padding-left: 55px; cursor: pointer; }
+        .step-node { position: absolute; left: 0; top: 0; width: 40px; height: 40px; background: var(--bg-dark); border: 3px solid var(--cyan); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #FFFFFF; font-weight: 700; z-index: 10; transition: all 0.3s ease; }
+        
+        .roadmap-step:hover .step-node, .roadmap-step.active .step-node { background: var(--cyan); box-shadow: 0 0 12px var(--cyan); }
+        .step-card { background: var(--bg-card); padding: 20px; border-radius: 12px; border: 1px solid rgba(229, 231, 235, 0.08); transition: all 0.3s ease; }
+        .roadmap-step:hover .step-card, .roadmap-step.active .step-card { border-color: var(--cyan); transform: translateY(-3px); background-color: var(--bg-card-hover); box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4); }
+        
+        .step-badge { display: inline-block; background: rgba(0, 178, 178, 0.15); color: var(--cyan-hover); font-size: 0.75rem; padding: 3px 10px; border-radius: 15px; margin-bottom: 8px; font-weight: 600; }
+        .click-action-trigger { display: inline-flex; align-items: center; gap: 6px; background: rgba(0, 178, 178, 0.1); color: var(--cyan-hover); font-size: 0.8rem; font-weight: 700; padding: 6px 12px; border-radius: 6px; border: 1px solid var(--cyan); margin-top: 10px; }
+
+        /* Painel Detalhado Interativo (Expansível por Pilar) */
+        .details-panel { background: var(--bg-card); border: 2px solid var(--cyan); border-radius: 14px; padding: 30px; margin: 20px 0 60px; display: none; box-shadow: 0 10px 30px rgba(0, 178, 178, 0.2); animation: fadeIn 0.4s ease-in-out; }
+        .details-panel.active { display: block; }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .panel-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(229, 231, 235, 0.1); padding-bottom: 15px; margin-bottom: 20px; }
+        .panel-header h2 { color: var(--cyan-hover); font-size: 1.5rem; }
+        .panel-close { background: rgba(255, 255, 255, 0.1); border: none; color: #FFFFFF; width: 34px; height: 34px; border-radius: 50%; cursor: pointer; font-size: 1.2rem; display: flex; align-items: center; justify-content: center; transition: background 0.2s; }
+        .panel-close:hover { background: var(--cyan); color: var(--bg-dark); }
+
+        .panel-body-grid { display: grid; grid-template-columns: 2fr 1fr; gap: 25px; }
+        .panel-body-grid p { color: var(--gray-muted); font-size: 0.95rem; margin-bottom: 15px; }
+        
+        .deliverables-list { list-style: none; margin-top: 10px; }
+        .deliverables-list li { position: relative; padding-left: 26px; margin-bottom: 12px; color: var(--silver); font-size: 0.92rem; }
+        .deliverables-list li::before { content: '✔'; position: absolute; left: 0; color: var(--cyan); font-weight: 700; }
+
+        .panel-sidebar { background: rgba(17, 23, 32, 0.6); padding: 20px; border-radius: 10px; border: 1px solid rgba(229, 231, 235, 0.05); }
+        .panel-sidebar h4 { font-size: 0.95rem; color: var(--cyan); margin-bottom: 10px; text-transform: uppercase; letter-spacing: 0.5px; }
+
+        @media (max-width: 768px) {
+            .panel-body-grid { grid-template-columns: 1fr; }
+        }
+    </style>
 </head>
 <body>
 
-    <!-- Header -->
-    <header class="header">
-        <div class="container header-container">
-            <a href="index.html" class="logo">
-                <i class="fa-solid fa-gears logo-icon"></i>
-                <span>Tech <strong>Solutions RG</strong></span>
-            </a>
-            <nav class="nav-menu">
-                <a href="index.html#home">Home</a>
-                <a href="index.html#solucoes">Soluções</a>
-                <a href="roadmap_servicos.html" class="active">Roadmap</a>
-                <a href="index.html#contato">Contato</a>
-            </nav>
-        </div>
-    </header>
-
-    <main class="container">
-        
-        <!-- Hero Section -->
+    <div class="container">
         <section class="roadmap-hero">
-            <h1>Roadmap de Serviços Industriais</h1>
-            <p>Conheça o fluxo operacional completo e selecione as etapas do seu projeto.</p>
-            
+            <h1>Roadmap <span>Operacional Detalhado</span></h1>
+            <p>Explore a jornada completa de engenharia integrada. Clique em qualquer etapa abaixo para visualizar os escopos, entregáveis e diferenciais técnicos.</p>
             <div class="instruction-banner">
-                <i class="fa-solid fa-hand-pointer"></i> Clique nos cards abaixo para ver os detalhes de cada etapa
-            </div>
-
-            <!-- Filtros de Categorias -->
-            <div class="filter-container">
-                <button class="filter-btn active" onclick="filterRoadmap('todos', this)"><i class="fa-solid fa-layer-group"></i> Visão Geral (Turnkey)</button>
-                <button class="filter-btn" onclick="filterRoadmap('mecanica', this)"><i class="fa-solid fa-industry"></i> Metal Mecânica</button>
-                <button class="filter-btn" onclick="filterRoadmap('eletrica', this)"><i class="fa-solid fa-bolt"></i> Elétrica & NR-10</button>
-                <button class="filter-btn" onclick="filterRoadmap('terceirizacao', this)"><i class="fa-solid fa-users-gear"></i> Mão de Obra & Paradas</button>
+                <span>⚡ Clique em uma fase para abrir o painel técnico interativo</span>
             </div>
         </section>
 
-        <!-- Timeline -->
-        <section class="roadmap-timeline" id="timeline">
+        <!-- TIMELINE DOS 5 PILARES -->
+        <div class="roadmap-timeline">
             
-            <!-- Passo 1 -->
-            <div class="roadmap-step left" data-category="mecanica eletrica" onclick="selectStep(1, this)">
-                <div class="step-node">01</div>
+            <!-- Pilar 1 -->
+            <div class="roadmap-step" onclick="toggleDetails(1)">
+                <div class="step-node">1</div>
                 <div class="step-card">
-                    <span class="step-badge">Etapa 1</span>
-                    <h3>1. Diagnóstico & Engenharia de Projeto</h3>
-                    <p>Vistoria técnica, mapeamento de demandas e projetos em conformidade com normas.</p>
-                    <div class="click-action-trigger">
-                        <span>Ver Detalhes do Projeto</span> <i class="fa-solid fa-chevron-down"></i>
-                    </div>
+                    <span class="step-badge">Fundação Metal Mecânica</span>
+                    <h3>Levantamento e Metal Mecânica Industrial</h3>
+                    <p>Início da integração através de fabricação e caldeiraria pesada sob medida para assegurar robustez estrutural.</p>
+                    <div class="click-action-trigger">Ver Detalhes Técnicos & Escopo ➔</div>
                 </div>
             </div>
 
-            <!-- Passo 2 -->
-            <div class="roadmap-step right" data-category="mecanica" onclick="selectStep(2, this)">
-                <div class="step-node">02</div>
+            <!-- Pilar 2 -->
+            <div class="roadmap-step" onclick="toggleDetails(2)">
+                <div class="step-node">2</div>
                 <div class="step-card">
-                    <span class="step-badge">Etapa 2</span>
-                    <h3>2. Caldeiraria Especializada & Fabricação</h3>
-                    <p>Confecção de tanques, tubulações, soldagem MIG/TIG e estruturas metálicas.</p>
-                    <div class="click-action-trigger">
-                        <span>Ver Entregáveis de Fabricação</span> <i class="fa-solid fa-chevron-down"></i>
-                    </div>
+                    <span class="step-badge">Precisão em Campo</span>
+                    <h3>Soldagem de Precisão e Montagem</h3>
+                    <p>A união exata de materiais e o posicionamento final no ambiente do cliente com processos certificados.</p>
+                    <div class="click-action-trigger">Ver Detalhes Técnicos & Escopo ➔</div>
                 </div>
             </div>
 
-            <!-- Passo 3 -->
-            <div class="roadmap-step left" data-category="eletrica" onclick="selectStep(3, this)">
-                <div class="step-node">03</div>
+            <!-- Pilar 3 -->
+            <div class="roadmap-step" onclick="toggleDetails(3)">
+                <div class="step-node">3</div>
                 <div class="step-card">
-                    <span class="step-badge">Etapa 3</span>
-                    <h3>3. Montagem & Infraestrutura Elétrica</h3>
-                    <p>Instalação de painéis CCM/QGBT, cabos, leitos, aterramento e sistemas SPDA.</p>
-                    <div class="click-action-trigger">
-                        <span>Ver Escopo de Elétrica</span> <i class="fa-solid fa-chevron-down"></i>
-                    </div>
+                    <span class="step-badge">Infraestrutura Crítica</span>
+                    <h3>Inteligência Elétrica e Automação</h3>
+                    <p>Implementação do sistema nervoso da operação garantindo energia segura e conformidade rigorosa.</p>
+                    <div class="click-action-trigger">Ver Detalhes Técnicos & Escopo ➔</div>
                 </div>
             </div>
 
-            <!-- Passo 4 -->
-            <div class="roadmap-step right" data-category="mecanica eletrica" onclick="selectStep(4, this)">
-                <div class="step-node">04</div>
+            <!-- Pilar 4 -->
+            <div class="roadmap-step" onclick="toggleDetails(4)">
+                <div class="step-node">4</div>
                 <div class="step-card">
-                    <span class="step-badge">Etapa 4</span>
-                    <h3>4. Comissionamento & Testes de Carga</h3>
-                    <p>Partida de motores, validação de inversores e testes de acionamento com segurança.</p>
-                    <div class="click-action-trigger">
-                        <span>Ver Testes e Laudos</span> <i class="fa-solid fa-chevron-down"></i>
-                    </div>
+                    <span class="step-badge">Validação Operacional</span>
+                    <h3>Comissionamento e Startup Seguro</h3>
+                    <p>Etapa vital de testes automatizados e verificações antes da liberação definitiva para produção contínua.</p>
+                    <div class="click-action-trigger">Ver Detalhes Técnicos & Escopo ➔</div>
                 </div>
             </div>
 
-            <!-- Passo 5 -->
-            <div class="roadmap-step left" data-category="terceirizacao mecanica eletrica" onclick="selectStep(5, this)">
-                <div class="step-node">05</div>
+            <!-- Pilar 5 -->
+            <div class="roadmap-step" onclick="toggleDetails(5)">
+                <div class="step-node">5</div>
                 <div class="step-card">
-                    <span class="step-badge">Etapa 5</span>
-                    <h3>5. Manutenção & Terceirização de Equipes</h3>
-                    <p>Contratos mensais de manutenção e equipes dedicadas para paradas industriais.</p>
-                    <div class="click-action-trigger">
-                        <span>Ver Perfis de Mão de Obra</span> <i class="fa-solid fa-chevron-down"></i>
-                    </div>
+                    <span class="step-badge">Continuidade e Parceria</span>
+                    <h3>Manutenção Integrada e Suporte</h3>
+                    <p>Garantia de ciclo de vida prolongado para os ativos e mitigação total de downtimes não planejados.</p>
+                    <div class="click-action-trigger">Ver Detalhes Técnicos & Escopo ➔</div>
                 </div>
             </div>
 
-        </section>
-
-        <!-- Painel de Detalhes -->
-        <section class="details-panel" id="details-panel">
-            <div class="panel-header">
-                <h2 id="panel-title">Detalhamento dos Serviços</h2>
-                <button class="panel-close" onclick="closePanel()">&times;</button>
-            </div>
-            <div class="panel-grid">
-                <div>
-                    <h4 style="color: #fff; margin-bottom: 12px;">Entregáveis Técnicos da Etapa:</h4>
-                    <ul class="deliverables-list" id="panel-deliverables"></ul>
-                </div>
-                <div class="cta-box">
-                    <h4 style="color: #fff;">Incluir no seu Projeto?</h4>
-                    <p style="font-size: 0.85rem; color: var(--silver-dark); margin-top: 5px;">Solicite um orçamento sob medida para sua indústria.</p>
-                    <a href="index.html#contato" class="btn-cta" id="panel-cta-btn">Solicitar Proposta</a>
-                </div>
-            </div>
-        </section>
-
-    </main>
-
-    <footer style="text-align: center; padding: 25px 0; background: #0b0f16; border-top: 1px solid rgba(229,231,235,0.1); font-size: 0.85rem; color: #9CA3AF;">
-        <div class="container">
-            <p><strong>E. de O. Xavier & Cia LTDA</strong> | CNPJ: 59.437.805/0001-40 | Rio Grande / RS</p>
-            <p style="margin-top: 4px;">&copy; 2026 Tech Solutions RG. Todos os direitos reservados.</p>
         </div>
-    </footer>
 
-    <!-- Script Explicito no Final -->
-    <script src="script.js"></script>
+        <!-- PAINÉIS DE DETALHAMENTO EXPANSÍVEIS -->
+
+        <!-- Painel 1 -->
+        <div id="panel-1" class="details-panel">
+            <div class="panel-header">
+                <h2>Pilar 01: Levantamento e Metal Mecânica Industrial</h2>
+                <button class="panel-close" onclick="closeDetails(1)">&times;</button>
+            </div>
+            <div class="panel-body-grid">
+                <div>
+                    <p>Esta etapa foundational foca na concepção mecânica sob medida. Projetamos e executamos estruturas robustas que suportam o ecossistema produtivo severo da planta industrial com tolerâncias milimétricas.</p>
+                    <ul class="deliverables-list">
+                        <li>Fabricação especializada de tanques, reservatórios, silos de grande porte, chutes e dutos.</li>
+                        <li>Construção de infraestrutura de acesso ergonômica: mezaninos, plataformas e escadas industriais.</li>
+                        <li>Desenvolvimento de estruturas de suporte, bases metálicas vibratórias e enclausuramentos de proteção.</li>
+                    </ul>
+                </div>
+                <div class="panel-sidebar">
+                    <h4>Indicadores de Valor</h4>
+                    <p><strong>Foco:</strong> Integridade Física</p>
+                    <p><strong>Normas:</strong> ABNT / ASME aplicadas</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Painel 2 -->
+        <div id="panel-2" class="details-panel">
+            <div class="panel-header">
+                <h2>Pilar 02: Soldagem de Precisão e Montagem em Campo</h2>
+                <button class="panel-close" onclick="closeDetails(2)">&times;</button>
+            </div>
+            <div class="panel-body-grid">
+                <div>
+                    <p>Garantia de união metalúrgica impecável. Contamos com equipes de soldadores qualificados por EPS/RQPS para atuar diretamente no canteiro de obras ou montagem de linhas complexas.</p>
+                    <ul class="deliverables-list">
+                        <li>Processos altamente qualificados: MIG/MAG, TIG e Eletrodo Revestido.</li>
+                        <li>Amplo domínio de ligas metálicas, incluindo Aço Carbono, Aço Inox e Alumínio.</li>
+                        <li>Montagem integrada de linhas de tubulações e estruturas com capacidade de rápida adaptação em campo.</li>
+                    </ul>
+                </div>
+                <div class="panel-sidebar">
+                    <h4>Indicadores de Valor</h4>
+                    <p><strong>Foco:</strong> Risco Zero de Falha Estrutural</p>
+                    <p><strong>Inspeção:</strong> Ensaios não destrutivos (END)</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Painel 3 -->
+        <div id="panel-3" class="details-panel">
+            <div class="panel-header">
+                <h2>Pilar 03: Inteligência Elétrica e Automação</h2>
+                <button class="panel-close" onclick="closeDetails(3)">&times;</button>
+            </div>
+            <div class="panel-body-grid">
+                <div>
+                    <p>A energia e os comandos que fazem a planta rodar. Projetamos e montamos toda a infraestrutura elétrica de baixa e média tensão com total alinhamento às normativas de segurança vigentes.</p>
+                    <ul class="deliverables-list">
+                        <li>Montagem de Painéis de Comando, Centros de Controle de Motores (CCM) e QGBT.</li>
+                        <li>Infraestrutura física robusta: eletrocalhas, leitos, lançamento de cabos blindados e subestações.</li>
+                        <li>Sistemas Críticos de contingência (Nobreaks, Geradores) e adequação integral à NR-10 e SPDA.</li>
+                    </ul>
+                </div>
+                <div class="panel-sidebar">
+                    <h4>Indicadores de Valor</h4>
+                    <p><strong>Foco:</strong> Conformidade NR-10 & Segurança</p>
+                    <p><strong>Confiabilidade:</strong> Redundância de Energia</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Painel 4 -->
+        <div id="panel-4" class="details-panel">
+            <div class="panel-header">
+                <h2>Pilar 04: Comissionamento e Startup Seguro</h2>
+                <button class="panel-close" onclick="closeDetails(4)">&times;</button>
+            </div>
+            <div class="panel-body-grid">
+                <div>
+                    <p>A transição planejada entre a infraestrutura montada e a operação comercial. Validamos cada ponto elétrico, sensor e atuador para eliminar surpresas no primeiro dia de produção.</p>
+                    <ul class="deliverables-list">
+                        <li>Inspeções visuais e dimensionais completas, acompanhadas de megagem e testes de isolamento.</li>
+                        <li>Parametrização avançada de Inversores de Frequência, soft-starters e redes industriais.</li>
+                        <li>Validação de malhas de controle, intertravamentos de segurança e start assistido em campo.</li>
+                    </ul>
+                </div>
+                <div class="panel-sidebar">
+                    <h4>Indicadores de Valor</h4>
+                    <p><strong>Foco:</strong> Zero Surpresas no Startup</p>
+                    <p><strong>Entrega:</strong> Planta Pronta para Produção</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Painel 5 -->
+        <div id="panel-5" class="details-panel">
+            <div class="panel-header">
+                <h2>Pilar 05: Manutenção Integrada e Parcerias</h2>
+                <button class="panel-close" onclick="closeDetails(5)">&times;</button>
+            </div>
+            <div class="panel-body-grid">
+                <div>
+                    <p>O compromisso de longo prazo com a performance da sua fábrica. Atuamos fortemente na preservação dos ativos para blindar o negócio contra paradas não planejadas (downtimes).</p>
+                    <ul class="deliverables-list">
+                        <li>Planos estruturados de Manutenção Preventiva, Corretiva e projetos de Retrofit tecnológico.</li>
+                        <li>Terceirização estratégica de especialistas dedicados (Caldeireiros, Soldadores, Eletricistas e Montadores).</li>
+                        <li>Esquadrões de Resposta Rápida prontos para atuar em paradas gerais programadas com alta agilidade.</li>
+                    </ul>
+                </div>
+                <div class="panel-sidebar">
+                    <h4>Indicadores de Valor</h4>
+                    <p><strong>Foco:</strong> Downtime Zero</p>
+                    <p><strong>Parceria:</strong> Suporte Dedicado Contínuo</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- SCRIPT DE INTERATIVIDADE DOS PAINÉIS -->
+    <script>
+        function toggleDetails(id) {
+            // Fecha todos os painéis abertos e remove classe ativa dos passos
+            for (let i = 1; i <= 5; i++) {
+                document.getElementById('panel-' + i).classList.remove('active');
+            }
+            
+            // Ativa o painel selecionado
+            const targetPanel = document.getElementById('panel-' + id);
+            targetPanel.classList.add('active');
+            
+            // Rola suavemente para o painel aberto para melhor experiência do usuário (UX)
+            targetPanel.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+
+        function closeDetails(id) {
+            document.getElementById('panel-' + id).classList.remove('active');
+        }
+    </script>
 </body>
 </html>

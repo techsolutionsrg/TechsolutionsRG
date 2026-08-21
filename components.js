@@ -5,9 +5,10 @@ class AppHeader extends HTMLElement {
       <header class="header">
         <div class="container header-container">
           <a href="index.html" class="logo">
-            <i class="fa-solid fa-code logo-icon"></i> TechsolutionsRG
+            <i class="fa-solid fa-code logo-icon"></i> Tech Solutions RG
           </a>
           <nav class="nav-menu" id="nav-menu">
+            <a href="index.html">Home</a>
             <a href="index.html#servicos">Serviços</a>
             <a href="roadmap_servicos.html">Roadmap</a>
             <a href="index.html#contato" class="btn btn-primary mobile-menu-cta">Contato</a>
@@ -28,8 +29,8 @@ class AppFooter extends HTMLElement {
       <footer class="footer">
         <div class="container footer-container">
           <div class="footer-info">
-            <h4>TechsolutionsRG</h4>
-            <p>Transformando ideias em soluções digitais robustas, elegantes e de alta performance.</p>
+            <h4>Tech Solutions RG</h4>
+            <p>Provedor completo de infraestrutura mecânica e elétrica. Atendemos desde demandas pontuais até a gestão integral de grandes paradas industriais.</p>
           </div>
           <div>
             <h5>Navegação</h5>
@@ -45,24 +46,14 @@ class AppFooter extends HTMLElement {
               <li><a href="index.html#contato">Solicitar Orçamento</a></li>
             </ul>
           </div>
-          <div>
-            <h5>Redes</h5>
-            <div class="social-icons">
-              <a href="https://github.com/techsolutionsrg" target="_blank" rel="noopener" aria-label="GitHub">
-                <i class="fa-brands fa-github"></i>
-              </a>
-            </div>
-          </div>
         </div>
         <div class="footer-bottom">
-          <p>&copy; 2026 TechsolutionsRG. Todos os direitos reservados.</p>
+          <p>&copy; 2026 E. de O. Xavier & Cia LTDA - Todos os direitos reservados.</p>
         </div>
       </footer>
     `;
   }
 }
 
-// Registro dos elementos customizados
 customElements.define('app-header', AppHeader);
 customElements.define('app-footer', AppFooter);
-
