@@ -21,7 +21,7 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install google-api-python-client google-auth-httplib2 google-auth-oauthlib
+          pip install pydrive2
 
       - name: Authenticate and Sync to Google Drive
         env:
@@ -31,38 +31,49 @@ jobs:
           cat << 'EOF' > sync.py
           import os
           import json
-          from google.oauth2.service_account import Credentials
-          from googleapiclient.discovery import build
-          from googleapiclient.http import MediaFileUpload
+          from pydrive2.auth import GoogleAuth
+          from pydrive2.drive import GoogleDrive
 
-          creds_json = json.loads(os.environ['GCP_SA_KEY'])
+          # Salva a chave temporariamente para a biblioteca autenticar
+          key_data = json.loads(os.environ['GCP_SA_KEY'])
+          with open('sa_key.json', 'w') as f:
+              json.dump(key_data, f)
+
           folder_id = os.environ['GDRIVE_FOLDER_ID']
-          
-          scopes = ['https://www.googleapis.com/auth/drive']
-          creds = Credentials.from_service_account_info(creds_json, scopes=scopes)
-          service = build('drive', 'v3', credentials=creds)
 
-          print(f"Buscando arquivos em: {os.getcwd()}")
+          settings = {
+              "client_config_backend": "service",
+              "service_config": {
+                  "client_json_file_path": "sa_key.json",
+              }
+          }
+
+          gauth = GoogleAuth(settings=settings)
+          gauth.ServiceAuth()
+          drive = GoogleDrive(gauth)
+
+          print(f"Lendo diretório: {os.getcwd()}")
 
           for root, dirs, files in os.walk('.'):
               if '.git' in root or root.startswith('./.github'):
                   continue
               for file in files:
-                  if file == 'sync.py':
+                  if file in ['sync.py', 'sa_key.json']:
                       continue
                   filepath = os.path.join(root, file)
-                  file_metadata = {
-                      'name': file,
-                      'parents': [folder_id]
-                  }
-                  media = MediaFileUpload(filepath)
-                  uploaded_file = service.files().create(
-                      body=file_metadata,
-                      media_body=media,
-                      supportsAllDrives=True,
-                      fields='id'
-                  ).execute()
+                  
+                  # Cria e envia o arquivo forçando o vínculo direto à pasta do destinatário
+                  gfile = drive.CreateFile({
+                      'title': file,
+                      'parents': [{'id': folder_id}]
+                  })
+                  gfile.SetContentFile(filepath)
+                  gfile.Upload(param={'supportsAllDrives': True})
                   print(f'Sincronizado: {filepath}')
+
+          # Remove a chave temporária ao terminar
+          if os.path.exists('sa_key.json'):
+              os.remove('sa_key.json')
           EOF
           python sync.py
           
